@@ -1,18 +1,17 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <p class="text-3xl font-bold underline">Tailwind css</p>
+    <img alt="Vue logo" src="./assets/logo.png" width="50" height="50">
+    <RegistrationComponent></RegistrationComponent>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
+import RegistrationComponent from './components/Registration.vue'
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld
+    RegistrationComponent
   }
 }
 </script>
