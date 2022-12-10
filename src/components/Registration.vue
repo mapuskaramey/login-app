@@ -11,18 +11,22 @@
                         <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Click to Login</a>
                     </p>
                 </div>
-                <form 
-                    class="mt-8 space-y-6" 
-                    action="#" 
-                    method="POST"
+                <ValidationObserver
                 >
-                <input 
-                    type="hidden" 
-                    name="remember" 
-                    value="true" 
+                <form 
+                    class="mt-8 space-y-6"
+                    method="POST"
+                    @submit.prevent="validateForm"
+                    novalidate
+                    autocomplete="off"
                 >
                 <div class="-space-y-px rounded-md shadow-sm">
-                    <div>
+                    <validation-provider
+                    rules="charOnly|minMax:4,8"
+                    v-slot="{
+                                errors
+                            }"
+                    >
                         <label 
                             for="username" 
                             class="sr-only">
@@ -30,16 +34,23 @@
                         </label>
                         <input 
                             id="username" 
-                            name="name" 
-                            type="name" 
-                            autocomplete="name" 
-                            required 
+                            name="username" 
+                            type="text"
+                            v-model="user.username"
                             class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" 
-                            placeholder="Name Or Username"
+                            placeholder="Enter name or username"
+                            
                         >
-                    </div>
+                        <span class="error">{{ errors[0] }}</span>
+                    </validation-provider>
 
-                    <div>
+                    <validation-provider
+                    v-slot="{ 
+                                errors 
+                            }"
+                    rules="required|emailReg"
+                    name="Email address"
+                    >
                         <label 
                             for="email-address" 
                             class="sr-only">
@@ -49,14 +60,18 @@
                             id="email-address" 
                             name="email" 
                             type="email" 
-                            autocomplete="email" 
-                            required 
+                            v-model="user.email"
                             class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" 
                             placeholder="Email address"
                         >
-                    </div>
+                        <span class="error">{{ errors[0] }}</span>
+                    </validation-provider>
 
-                    <div>
+                    <validation-provider
+                    v-slot="{ errors }"
+                    rules="required|DOBReg"
+                    name="Date of birth"
+                    >
                         <label 
                             for="DOB" 
                             class="sr-only">
@@ -66,12 +81,12 @@
                             id="DOB" 
                             name="DOB" 
                             type="date" 
-                            autocomplete="DOB" 
-                            required 
+                            v-model="user.DOB"
                             class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" 
                             placeholder="Date of Birth"
                         >
-                    </div>
+                        <span class="error">{{ errors[0] }}</span>
+                    </validation-provider>
                     
                     <div>
                         <label 
@@ -82,9 +97,8 @@
                         <input 
                             id="password" 
                             name="password" 
-                            type="password" 
-                            autocomplete="current-password" 
-                            required 
+                            type="password"
+                             
                             class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm" 
                             placeholder="Password"
                         >
@@ -95,7 +109,7 @@
                     <div class="flex items-center">
                         <input 
                             id="remember-me" 
-                            name="remember-me" 
+                            name="rememberMe" 
                             type="checkbox" 
                             class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                         >
@@ -105,15 +119,16 @@
                             Remember me
                         </label>
                     </div>
-                    <!-- <div class="text-sm">
+                    <div class="text-sm">
                     <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
-                    </div> -->
+                    </div>
                 </div>
 
                 <div>
                     <button 
-                        type="submit"
-                        class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    
+                    type="submit"
+                    class="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                     <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                         <svg 
@@ -134,13 +149,45 @@
                     </button>
                 </div>
                 </form>
+                </ValidationObserver>
             </div>
-            </div>
+        </div>
     </div>
 </template>
 
-<script type="module">
+<script>
+import registration from '../mixins/registration.js'
+import { ValidationObserver, ValidationProvider } from 'vee-validate'
+
+
 export default {
+    components: {
+    ValidationProvider,
+    ValidationObserver
+},
+    mixins: [ registration ],
+    data() {
+        return {
+            user : {
+                username: '',
+                DOB: '',
+                email: '',
+                password: '',
+                rememberMe: ''
+            }
+        }
+    },
+    methods: {
+        
+    }
 
 }
 </script>
+
+<style scoped>
+.error {
+    text-align: left;
+    display: block;
+    color: rgb(197, 5, 30)
+}
+</style>
