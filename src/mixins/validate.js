@@ -13,7 +13,7 @@ extend('minMax', {
         if (value.length > min && value.length < max) {
             return true
         }
-        return "username length must be between {min} and {max}."
+        return "{_field_} must be between min:{min} and max:{max}."
     },
     params: [ 'min', 'max' ]
 
@@ -55,4 +55,18 @@ extend('DOBReg', {
         }
     },
     message: 'Invalid {_field_}!'
+})
+extend('MinAge', {
+    validate (value) {
+        let birthDate = Date.parse(value)
+        let currentDate = new Date()
+        let diff = (currentDate - birthDate)
+        let age = Math.floor(diff / (1000 * 60 * 60 * 24 * 30 * 12))
+        // console.log(age)
+        // age must be 18 or more
+        return {
+            valid: age >= 19
+        }
+    },
+    message: 'Are you sure you are 18+ year\'s old !'
 })
