@@ -570,10 +570,6 @@ video {
   display: flex;
 }
 
-.hidden {
-  display: none;
-}
-
 .h-4 {
   height: 1rem;
 }
@@ -728,9 +724,9 @@ video {
   letter-spacing: -0.025em;
 }
 
-.text-gray-900 {
+.text-lime-800 {
   --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
+  color: rgb(63 98 18 / var(--tw-text-opacity));
 }
 
 .text-gray-600 {
@@ -743,9 +739,9 @@ video {
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
-.text-amber-600 {
+.text-gray-900 {
   --tw-text-opacity: 1;
-  color: rgb(217 119 6 / var(--tw-text-opacity));
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -786,8 +782,6 @@ video {
 img {
   display: inline-block;
 }
-
-/* Registraion form */
 
 .hover\:bg-indigo-700:hover {
   --tw-bg-opacity: 1;

@@ -2,8 +2,8 @@
     <div>
         <div class="flex min-h-full items-center justify-center py-3 px-4 sm:px-6 lg:px-8">
             <div class="w-full max-w-md space-y-8">
-                <div>
-                    <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                <div class="title">
+                    <h2 class="text-lime-800 mt-6 text-center text-3xl tracking-tight">
                         Sign in to your account
                     </h2>
                     <p class="mt-2 text-center text-sm text-gray-600">
@@ -20,6 +20,7 @@
                         @submit.prevent="handleSubmit(validateForm)"
                         novalidate
                         autocomplete="off"
+                        id="reg"
                     >
                         <div class="-space-y-px rounded-md shadow-sm">
                             <validation-provider
@@ -199,9 +200,20 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Tangerine');
 .error {
     text-align: left;
     display: block;
     color: rgb(197, 5, 30)
+}
+#reg input {
+    box-sizing: border-box;
+    border-radius: 0;
+    margin-top: 10px;
+}
+.title h2{
+    font-family: 'Tangerine', serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 </style>
