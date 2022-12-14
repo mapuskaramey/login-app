@@ -217,9 +217,5 @@ export default {
     border-radius: 0;
     margin-top: 10px;
 }
-.title h2{
-    font-family: 'Tangerine', serif;
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
+
 </style>

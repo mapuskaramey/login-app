@@ -9,17 +9,19 @@
                             <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                                 <!-- put sign in icon here -->
                             </div>
-                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                <h3 class="text-lg font-medium leading-6 text-gray-900" id="modal-title">Sign in now!</h3>
+                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left title">
+                                <h2 class="leading-6 text-gray-900">Sign in now!</h2>
                                 <div class="mt-2">
-                                    <p class="text-sm text-gray-500">Are you not sign up yet?, click to, 
+                                    <p class="text-sm text-gray-500">Are you not sign up yet?, click 
                                         <u>
                                             <a href="/">sign up</a>
                                         </u> 
                                     </p>
                                 </div>
-                                <div class="mt-2">
-                                    <form autocomplete="off">
+                                <div class="mt-5">
+                                    <form 
+                                    id="login"
+                                    autocomplete="off">
                                         <label
                                             for="email-address"
                                             class="sr-only">
@@ -30,7 +32,7 @@
                                             name="email"
                                             type="email"
 
-                                            class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                            class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                             placeholder="Email address"
                                         >
                                         <label
@@ -43,10 +45,12 @@
                                             name="password"
                                             type="password"
 
-                                            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                             placeholder="Password"
                                         >
                                     </form>
+                                    <div class="circule circule2 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"></div>
+                                    <div class="circule circule3 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"></div>
                                 </div>
                             </div>
                         </div>
@@ -69,3 +73,20 @@ export default {
 
 }
 </script>
+<style scoped>
+#login input {
+    box-sizing: border-box;
+    border-radius: 0;
+    margin-top: 10px;
+}
+.circule {
+    z-index: -1;
+    position: absolute;
+}
+.circule2{
+    top: -18px;
+}
+.circule3 {
+    bottom: -18px;
+}
+</style>
