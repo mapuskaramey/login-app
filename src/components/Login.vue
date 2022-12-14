@@ -21,9 +21,10 @@
                                 <div class="mt-5">
                                     <form 
                                     id="login"
-                                    autocomplete="off">
+                                    autocomplete="off"
+                                    @submit.prevent="loginValidate">
                                         <validation-provider
-                                        rules="required"
+                                        rules="required|emailReg"
                                         v-slot="{ errors }"
                                         >
                                             <label
@@ -42,19 +43,34 @@
                                             <span class="error">{{ errors[0] }}</span>
                                         </validation-provider>
 
-                                        <label
-                                            for="password"
-                                            class="sr-only">
-                                            Password
-                                        </label>
-                                        <input
-                                            id="password"
-                                            name="password"
-                                            type="password"
-
-                                            class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="Password"
+                                        <validation-provider
+                                        rules="required|loginPasswordMinMax: 4,12"
+                                        v-slot="{ errors }"
+                                        name="password"
                                         >
+                                            <label
+                                                for="password"
+                                                class="sr-only">
+                                                Password
+                                            </label>
+                                            <input
+                                                id="password"
+                                                name="password"
+                                                type="password"
+                                                v-model="login.password"
+                                                class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                placeholder="Password"
+                                            >
+                                            <span class="error">{{ errors[0] }}</span>
+                                        </validation-provider>
+
+                                        <div class="py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                            <button 
+                                            type="submit" 
+                                            class="mt-3 flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                                            sign in
+                                            </button>
+                                        </div>
                                     </form>
                                     <div class="circule circule2 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"></div>
                                     <div class="circule circule3 mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10"></div>
@@ -62,13 +78,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <button 
-                        type="button" 
-                        class="mt-3 flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                        sign in
-                        </button>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -88,7 +98,8 @@ export default {
     data () {
         return {
             login: {
-                email: null
+                email: null,
+                password: null
             }
         }
     },

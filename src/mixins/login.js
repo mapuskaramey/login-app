@@ -2,7 +2,7 @@ import Validate from './validate'
 
 export default {
     methods: {
-        validateForm () {
+        loginValidate () {
             console.log(this.login)
         }
     }

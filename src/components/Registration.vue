@@ -207,11 +207,6 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Tangerine');
-.error {
-    text-align: left;
-    display: block;
-    color: rgb(197, 5, 30)
-}
 #reg input {
     box-sizing: border-box;
     border-radius: 0;
