@@ -70,3 +70,12 @@ extend('MinAge', {
     },
     message: 'Are you sure you are 18+ year\'s old !'
 })
+extend('loginPasswordMinMax', {
+    validate (value, { min, max }) {
+        if (value.length > min && value.length < max) {
+            return true
+        }
+        return "Invalid {_field_}"
+    },
+    params: [ 'min', 'max' ]
+})

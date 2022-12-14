@@ -18,3 +18,15 @@
 img {
     display: inline-block;
 }
+
+/* font style */
+.title h2{
+    font-family: 'Tangerine', serif;
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+.error {
+    text-align: left;
+    display: block;
+    color: rgb(197, 5, 30)
+}

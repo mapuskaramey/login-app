@@ -12,7 +12,7 @@
                         <a 
                         href="#" 
                         @click="$emit('showLoginModel', true)"
-                        class="font-medium text-indigo-600 hover:text-indigo-500">
+                        class="font-medium text-indigo-600 ">
                         Click to sign in
                         </a>
                     </p>
@@ -45,7 +45,7 @@
                                     name="username"
                                     type="text"
                                     v-model="user.username"
-                                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10  focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Enter name or username"
 
                                 >
@@ -69,7 +69,7 @@
                                     name="email"
                                     type="email"
                                     v-model="user.email"
-                                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10  focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Email address"
                                 >
                                 <span class="error">{{ errors[0] }}</span>
@@ -92,7 +92,7 @@
                                     name="DOB"
                                     type="date"
                                     v-model="user.DOB"
-                                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10  focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Date of Birth"
                                 >
                                 <span class="error">{{ errors[0] }}</span>
@@ -115,7 +115,7 @@
                                     name="password"
                                     type="password"
                                     v-model="user.password"
-                                    class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10  focus:outline-none focus:ring-indigo-500 sm:text-sm"
                                     placeholder="Password"
                                 >
                                 <span
@@ -141,7 +141,7 @@
                                 </label>
                             </div>
                             <div class="text-sm">
-                            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
+                            <a href="#" class="font-medium text-indigo-600 ">Forgot your password?</a>
                             </div>
                         </div>
 
@@ -207,19 +207,10 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Tangerine');
-.error {
-    text-align: left;
-    display: block;
-    color: rgb(197, 5, 30)
-}
 #reg input {
     box-sizing: border-box;
     border-radius: 0;
     margin-top: 10px;
 }
-.title h2{
-    font-family: 'Tangerine', serif;
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
+
 </style>
