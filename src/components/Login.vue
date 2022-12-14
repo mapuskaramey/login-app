@@ -22,19 +22,26 @@
                                     <form 
                                     id="login"
                                     autocomplete="off">
-                                        <label
-                                            for="email-address"
-                                            class="sr-only">
-                                            Email address
-                                        </label>
-                                        <input
-                                            id="email-address"
-                                            name="email"
-                                            type="email"
-
-                                            class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="Email address"
+                                        <validation-provider
+                                        rules="required"
+                                        v-slot="{ errors }"
                                         >
+                                            <label
+                                                for="email-address"
+                                                class="sr-only">
+                                                Email address
+                                            </label>
+                                            <input
+                                                id="email-address"
+                                                name="email"
+                                                type="email"
+                                                v-model="login.email"
+                                                class="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                                placeholder="Email address"
+                                            >
+                                            <span class="error">{{ errors[0] }}</span>
+                                        </validation-provider>
+
                                         <label
                                             for="password"
                                             class="sr-only">
@@ -69,8 +76,23 @@
 </template>
 
 <script>
-export default {
+import { ValidationProvider } from 'vee-validate'
+import Login from '../mixins/login'
 
+export default {
+    
+    components: {
+        ValidationProvider
+    },
+
+    data () {
+        return {
+            login: {
+                email: null
+            }
+        }
+    },
+    mixins: [ Login ]
 }
 </script>
 <style scoped>
